@@ -1,12 +1,25 @@
 import { MantineProvider, Grid, Title, Flex, Textarea, Select } from '@mantine/core';
 
 import { ColorSchemeProvider } from '@mantine/core';
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import ThemeButton from './components/ThemeButton';
 
 export default function App() {
   const [colorScheme, setColorScheme] = useState('dark');
   const [value, setValue] = useState('');
+
+  useEffect(() => {
+    let ignore = false;
+    
+    if (!ignore) {
+      navigator.clipboard.readText().then(text => {
+        setValue(text);
+      });
+    }
+    return () => { ignore = true; }
+    },[]);
+
+  
 
 
   return (
@@ -30,6 +43,7 @@ export default function App() {
               maxRows={10}
               value={value}
               onChange={(event) => setValue(event.currentTarget.value)}
+              style={{ padding: "10px" }}
             />
             <Select
               label="Your favorite framework/library"
@@ -40,7 +54,10 @@ export default function App() {
                 { value: 'svelte', label: 'Svelte' },
                 { value: 'vue', label: 'Vue' },
               ]}
+              style={{ padding: "10px" }}
             />
+            <Title order={2} align="center" style={{padding:"50px"}}>Insert More Feilds Here</Title>
+            <Title order={2} align="center" style={{padding:"50px"}}>Display The Summary From Trained Model Here</Title>
           </Grid.Col>
           <Grid.Col span="auto">
 
