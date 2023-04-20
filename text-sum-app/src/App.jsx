@@ -55,11 +55,11 @@ export default function App() {
         <Flex justify="flex-end" style={{ padding: "10px" }}>
           <ThemeButton colorScheme={colorScheme} changeTheme={setColorScheme}></ThemeButton>
         </Flex>
-        <Grid style={{ padding: 100 }}>
+        <Grid style={{ padding: 10 }}>
           <Grid.Col span="auto">
           </Grid.Col>
           <Grid.Col span={8}>
-            <Title order={1} align="center">Text Summarization App</Title>
+            <Title order={1} align="center" style={{padding:"10px"}}>Text Summarization App</Title>
             <Textarea
               label="Enter what you want summarized"
               placeholder="Paste your text here"
@@ -81,7 +81,7 @@ export default function App() {
               ]}
               style={{ padding: "10px" }}
             />
-            <Title order={2} align="center" style={{ padding: "50px" }}>Insert More Feilds Here</Title>
+            <Title order={2} align="center" style={{ padding: "50px" }}>Insert More Fields Here</Title>
             <Title order={2} align="center" style={{ padding: "50px" }}>Display The Summary From Trained Model Here</Title>
             <Button variant="light" fullWidth style={{padding: "10px"}} onClick={() => {getSummary()}}>
               Get Summary
